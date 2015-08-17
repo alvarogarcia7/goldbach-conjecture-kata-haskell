@@ -9,3 +9,4 @@ goldbach n =
 
 
 test_7 = goldbach 7 == Just [2, 5]
+test_8 = goldbach 8 == Just [3, 5]
