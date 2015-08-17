@@ -8,8 +8,8 @@ goldbach n =
 	  	then Just [second_prime, n - second_prime]
 	  	else Just [third_prime, n - third_prime]
       		
-	where first_prime = (head primes)
-	      second_prime = head (tail primes)
+	where first_prime = primes !! 0
+	      second_prime = primes !! 1
 	      third_prime = primes !! 2
     
 test_7 = goldbach 7 == Just [2, 5]
