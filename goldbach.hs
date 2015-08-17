@@ -1,7 +1,17 @@
-primes = [2, 3, 5, 7, 11, 13, 17]
+{-# OPTIONS_GHC -O2 #-}
+import Data.Array.Unboxed
+ 
+primesToA m = sieve 3 (array (3,m) [(i,odd i) | i<-[3..m]]
+                        :: UArray Int Bool)
+  where
+    sieve p a 
+      | p*p > m   = 2 : [i | (i,True) <- assocs a]
+      | a!p       = sieve (p+2) $ a//[(i,False) | i <- [p*p, p*p+2*p..m]]
+      | otherwise = sieve (p+2) a
 
 goldbach :: Int -> Maybe [Int]
 goldbach n = is_goldbach n primes
+  where primes = primesToA n
 
 
 is_goldbach :: Int -> [Int] -> Maybe [Int]
