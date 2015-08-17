@@ -1,10 +1,7 @@
 primes = [2, 3, 5, 7, 11, 13, 17]
 
 goldbach :: Int -> Maybe [Int]
-goldbach n = 
-	case (is_goldbach n primes) of 
-		 (Just _) -> (is_goldbach n primes)
-		 Nothing -> Nothing
+goldbach n = is_goldbach n primes
 
 
 is_goldbach :: Int -> [Int] -> Maybe [Int]
